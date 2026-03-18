@@ -4,65 +4,227 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EXCLUSIVE PREMIUM HOUSE</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="rasm.webp" type="image/x-icon">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="icon" href="rasm.webp" type="image/x-icon">
+
+<style>
+/* ========== BODY & BASE ========== */
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: linear-gradient(black);
+  color: #fff;
+  padding: 40px 20px;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+/* Logo */
+.logo-wrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #7e5d0a, #FFF8DC, #7e5d0a, #7e5d0a);
+  animation: rotateGlow 6s linear infinite;
+  filter: blur(25px);
+  z-index: 0;
+}
+.logo {
+  position: relative;
+  width: 200px;
+  border-radius: 50%;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+.logo-wrapper:hover .logo { transform: scale(1.1) rotate(5deg); }
+
+.badge {
+  position: absolute;
+  bottom: 5px;
+  right: -10px;
+  background: linear-gradient(45deg, #ff0057, #ffcc00);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  z-index: 3;
+  box-shadow: 0 0 10px rgba(255,0,100,0.7);
+  animation: badgePulse 1.5s infinite;
+}
+@keyframes badgePulse { 0%{scale:1}50%{scale:1.1}100%{scale:1} }
+.logo-wrapper:hover .badge { transform: scale(1.2) rotate(-5deg); box-shadow: 0 0 20px rgba(255,255,255,0.9); }
+@keyframes rotateGlow { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+
+/* Buttons */
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto;
+  padding: 16px 25px;
+  font-size: 18px;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 300px;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s, opacity 0.2s;
+  background: linear-gradient(#B8860B);
+  background-size: 400% 400%;
+  animation: gradientBG 6s ease infinite, pulse 2s infinite;
+  border: none;
+}
+.button i { margin-right:10px; font-size:20px; }
+.ripple { position:absolute; border-radius:50%; transform:scale(0); animation:ripple 0.6s linear; background-color:rgba(255,255,255,0.3); pointer-events:none; }
+.button:hover { animation: gradientBG 3s ease infinite, pulseHover 1s infinite; }
+@keyframes ripple { to { transform: scale(4); opacity:0; } }
+@keyframes gradientBG {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;} }
+@keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.02);} }
+@keyframes pulseHover {0%,100%{transform:scale(1);}50%{transform:scale(1.04);} }
+.button.clicked { transform: scale(0.95); opacity:0.8; transition:0.1s; }
+
+/* Sparkles */
+.sparkles { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; }
+.sparkle { position:absolute; width:6px; height:6px; background:white; border-radius:50%; opacity:0.8; animation:sparkleWave linear infinite; }
+@keyframes sparkleWave {0%{transform:translateY(0) scale(0.5) rotate(0deg); opacity:0.8;}50%{transform:translateY(-400px) scale(1) rotate(180deg);opacity:1;}100%{transform:translateY(-800px) scale(1.2) rotate(360deg);opacity:0;}}
+
+/* QR container */
+.qrContainer { margin:20px auto; width:180px; height:180px; }
+
+/* Hover animatsiya: Copy + QR */
+#copyLink:hover, #qrButton:hover { transform: scale(1.06) rotate(-1deg); box-shadow: 0 0 25px rgba(255,255,255,0.5); }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+section { min-height: 100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.fade { opacity:0; transform:translateY(50px); transition: all 0.8s ease; }
+.fade.show { opacity:1; transform:translateY(0); }
+.links .button { margin:10px 0; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width:8px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(45deg,gold,orange); border-radius:10px; }
+</style>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<div class="logo-wrapper">
-  <img src="rasm.webp" alt="CodeA Wear Logo" class="logo">
-  
-  
-  <div class="badge">SALE 🔥</div>
-</div>
-<br>
-<br>
-<br>
-<a id="phoneButton" class="button phone" href="tel:+998919871717">
-    <i class="fas fa-phone-alt"></i> +998 91 987 17 17
-    <span class="ripple"></span>
-</a>
 
-<a class="button instagram" href="https://www.instagram.com/exclusive_premium_house_?igsh=bDA3aG1sMm1kcW5k" target="_blank">
-<i class="fab fa-instagram"></i> Instagram
-<span class="ripple"></span>
-</a>
+<!-- HERO -->
+<section class="hero fade">
+  <div class="logo-wrapper">
+    <img src="rasm.webp" alt="Logo" class="logo">
+    <div class="badge">SALE 🔥</div>
+  </div>
+</section>
 
-<a class="button telegram" href="https://t.me/exclusive_premium_house" target="_blank">
-<i class="fab fa-telegram-plane"></i> Telegram
-<span class="ripple"></span>
-</a>
+<!-- LINKS -->
+<section class="links fade">
+  <a id="phoneButton" class="button phone" href="tel:+998919871717">
+    <i class="fas fa-phone-alt"></i> +998 91 987 17 17 <span class="ripple"></span>
+  </a>
+  <a class="button instagram" href="#" target="_blank">
+    <i class="fab fa-instagram"></i> Instagram <span class="ripple"></span>
+  </a>
+  <a class="button telegram" href="#" target="_blank">
+    <i class="fab fa-telegram-plane"></i> Telegram <span class="ripple"></span>
+  </a>
+  <a class="button map" href="#" target="_blank">
+    <i class="fas fa-map-marker-alt"></i> Manzil <span class="ripple"></span>
+  </a>
+  <button id="copyLink" class="button copy">
+    <i class="fas fa-link"></i> Bio Linkni Nusxalash <span class="ripple"></span>
+  </button>
+  <button id="qrButton" class="button qr">
+    <i class="fas fa-qrcode"></i> QR Code <span class="ripple"></span>
+  </button>
+  <div id="qrContainer" class="qrContainer"></div>
+</section>
 
-<a class="button map" href="https://maps.apple/p/CGHaUeRcvbcw_D" target="_blank">
-<i class="fas fa-map-marker-alt"></i> Manzil
-<span class="ripple"></span>
-</a>
+<!-- FOOTER -->
+<section class="footer-section fade">
+  <footer class="footer">
+    <p>© 2026 Exclusive Premium House</p>
+  </footer>
+</section>
 
-<button id="copyLink" class="button copy">
-<i class="fas fa-link"></i> Bio Linkni Nusxalash
-<span class="ripple"></span>
-</button>
-
-<button id="qrButton" class="button qr">
-<i class="fas fa-qrcode"></i> QR Code
-<span class="ripple"></span>
-</button>
-
-<div id="qrContainer" class="qrContainer"></div>
 <div class="sparkles"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script src="script.js"></script>
-<footer class="footer">
-  <div class="footer-container">
-    <p class="copy">© 2026 Exclusive Premium House . All rights reserved.</p>
+<script>
+// RIPPLE EFFECT
+document.querySelectorAll('.button').forEach(button=>{
+  button.addEventListener('click', function(e){
+    const ripple=this.querySelector('.ripple');
+    ripple.style.left=`${e.offsetX}px`;
+    ripple.style.top=`${e.offsetY}px`;
+    ripple.classList.remove('animate'); void ripple.offsetWidth; ripple.classList.add('animate');
+    this.classList.add('clicked');
+    setTimeout(()=>this.classList.remove('clicked'),150);
+  });
+});
 
-  </div>
-</footer>
+// SPARKLES
+const sparklesContainer=document.querySelector('.sparkles');
+function createSparkle(){
+  const sparkle=document.createElement('div');
+  sparkle.classList.add('sparkle');
+  sparkle.style.left=Math.random()*window.innerWidth+'px';
+  sparkle.style.top=window.innerHeight+'px';
+  sparkle.style.animationDuration=(2+Math.random()*3)+'s';
+  sparklesContainer.appendChild(sparkle);
+  setTimeout(()=>sparkle.remove(),5000);
+}
+setInterval(createSparkle,200);
+
+// COPY LINK
+const copyButton=document.getElementById("copyLink");
+const bioLink="https://www.instagram.com/exclusive_premium_house_";
+copyButton.addEventListener('click',()=>{
+  navigator.clipboard.writeText(bioLink).then(()=>{
+    copyButton.innerText="✅ Nusxalandi!";
+    setTimeout(()=>{copyButton.innerHTML=`<i class="fas fa-link"></i> Bio Linkni Nusxalash <span class="ripple"></span>`;},1500);
+  });
+});
+
+// QR CODE
+const qrButton=document.getElementById("qrButton");
+const qrContainer=document.getElementById("qrContainer");
+qrButton.addEventListener('click',()=>{
+  qrContainer.innerHTML="";
+  QRCode.toCanvas(bioLink,{width:180,margin:1},(err,canvas)=>{
+    if(err) console.error(err);
+    qrContainer.appendChild(canvas);
+  });
+});
+
+// FADE ANIMATION
+const faders=document.querySelectorAll(".fade");
+function checkScroll(){
+  faders.forEach(el=>{
+    const top=el.getBoundingClientRect().top;
+    if(top<window.innerHeight-100){ el.classList.add("show"); }
+  });
+}
+window.addEventListener("load",checkScroll);
+window.addEventListener("scroll",checkScroll);
+</script>
+
 </body>
-</html>
+</html> 

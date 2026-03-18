@@ -133,3 +133,78 @@ p { margin-bottom:30px; font-size:16px; color:#ddd; }
   transform: scale(1.2) rotate(-5deg);
   box-shadow: 0 0 20px rgba(255,255,255,0.9);
 }
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section layout */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fade animatsiya */
+.fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tugmalar orasida joy */
+.links .button {
+  margin: 10px 0;
+}
+
+/* Scrollbar premium */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, gold, orange);
+  border-radius: 10px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.links .button {
+  margin: 10px 0;
+}
+
+/* Scrollbar premium */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, gold, orange);
+  border-radius: 10px;
+}
